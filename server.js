@@ -1,7 +1,6 @@
-// server.js
 const express = require("express");
 const bodyParser = require("body-parser");
-const userRoutes = require("./routes/users"); // <-- "./routes" if 'routes' is in the same folder
+const userRoutes = require("./routes/users");
 
 const app = express();
 const port = 3000;
