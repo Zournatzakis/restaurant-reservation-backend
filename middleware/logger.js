@@ -1,7 +1,26 @@
-// middleware/logger.js
-const logger = (req, res, next) => {
-  console.log(`${req.method} ${req.url} - ${new Date().toISOString()}`);
-  next(); // Pass control to the next middleware or route handler
-};
+const express = require("express");
+const router = express.Router();
+const {
+  getUsers,
+  registerUser,
+  updateUser,
+  deleteUser,
+  loginUser, // If you also want to implement login, you can add this too.
+} = require("../controllers/userController");
 
-module.exports = logger;
+// Get all users
+router.get("/", getUsers);
+
+// Register a new user
+router.post("/register", registerUser);
+
+// Update a user (use :id as a URL parameter)
+router.put("/:id", updateUser);
+
+// Delete a user
+router.delete("/:id", deleteUser);
+
+// Optionally, if you implement login:
+router.post("/login", loginUser);
+
+module.exports = router;
